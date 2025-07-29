@@ -1,3 +1,6 @@
+![Proje ekran görüntüsü](./public/jqvmap/Ekran görüntüsü 2025-07-29 182448.png)
+
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
