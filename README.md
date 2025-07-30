@@ -1,5 +1,4 @@
-![Proje ekran görüntüsü](public/jqvmap/Ekran görüntüsü 2025-07-29 182448.png)
-
+![Proje ekran görüntüsü](./public/jqvmap/Ekran%20görüntüsü%202025-07-29%20182448.png)
 
 # Nuxt Minimal Starter
 
