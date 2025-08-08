@@ -1,3 +1,9 @@
+![Anasayfa ekran görüntüsü](./public/jqvmap/Ekran%20görüntüsü%202025-07-29%20182448.png)
+![Harita ekran görüntüsü](./public/jqvmap/Ekran%20görüntüsü%202025-07-29%20182604.png)
+![Grafik ekran görüntüsü](./public/jqvmap/Ekran%20görüntüsü%202025-07-29%20182632.png)
+![Kullanıcı İşlem ekran görüntüsü](./public/jqvmap/Ekran%20görüntüsü%202025-07-29%20182704.png)
+![Departman İşlem ekran görüntüsü](./public/jqvmap/Ekran%20görüntüsü%202025-07-29%20182740.png)
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
