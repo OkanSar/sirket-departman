@@ -1,6 +1,6 @@
 <template>
   <div class="departments-section">
-    <h3>Departmanlar</h3>
+    <h3>{{ t('Departments') }}</h3>
     <SearchInput v-model="searchTerm" :pending="props.pending" />
     <div class="departments-grid">
       <template v-if="props.pending">
@@ -20,6 +20,7 @@ import type { Department } from '~/types/department'
 import SearchInput from './SearchInput.vue'
 import DepartmentCardLoader from './DepartmentCardLoader.vue'
 import DepartmentCard from './DepartmentCard.vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
   pending: boolean,
@@ -48,6 +49,8 @@ const filteredDepartments = computed(() => {
   }
   return [...filtered].sort((a, b) => Number(a.Id) - Number(b.Id))
 })
+
+const { t } = useI18n()
 </script>
 
 <style scoped>

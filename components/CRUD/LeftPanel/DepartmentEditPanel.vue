@@ -1,19 +1,19 @@
 <template>
   <v-expand-transition>
     <v-card v-if="editMode" class="edit-panel fixed-edit" elevation="5" outlined shaped>
-      <v-card-title class="edit-title">Departman Düzenle</v-card-title>
+      <v-card-title class="edit-title">{{ t('Department Edit') }}</v-card-title>
       <v-form @submit.prevent="emit('handleUpdate')" ref="editForm" class="edit-form">
-        <v-text-field v-model="form.Name" label="Departman Adı" disabled dense outlined class="mb-3" />
-        <v-text-field v-model.number="form.Income" label="Gelir" type="number" dense outlined class="mb-3" required/>
-        <v-text-field v-model.number="form.Expense" label="Gider" type="number" dense outlined class="mb-3" required/>
-        <v-autocomplete v-model="form.Company" :items="['Emay','TeknoCo']" item-title="Name" item-value="id" label="Şirket" dense outlined class="mb-3" required/>
-        <v-autocomplete v-model="form.CityCode" :items="cityOptions" item-title="name" item-value="code" label="Şehir" dense outlined class="mb-3" required/>
+        <v-text-field v-model="form.Name" :label="t('Department')" disabled dense outlined class="mb-3" />
+        <v-text-field v-model.number="form.Income" :label="t('Income')" type="number" dense outlined class="mb-3" required/>
+        <v-text-field v-model.number="form.Expense" :label="t('Expense')" type="number" dense outlined class="mb-3" required/>
+        <v-autocomplete v-model="form.Company" :items="['Emay','TeknoCo']" item-title="Name" item-value="id" :label="t('Company')" dense outlined class="mb-3" required/>
+        <v-autocomplete v-model="form.CityCode" :items="cityOptions" item-title="name" item-value="code" :label="t('City')" dense outlined class="mb-3" required/>
         <v-row dense>
           <v-col cols="6">
-            <v-btn type="submit" color="success" block rounded elevation="2">Güncelle</v-btn>
+            <v-btn type="submit" color="success" block rounded elevation="2">{{ t('Update') }}</v-btn>
           </v-col>
           <v-col cols="5">
-            <v-btn color="grey darken-1" block rounded elevation="2" @click="emit('cancelEdit')">İptal</v-btn>
+            <v-btn color="grey darken-1" block rounded elevation="2" @click="emit('cancelEdit')">{{ t('Cancel') }}</v-btn>
           </v-col>
         </v-row>
       </v-form>
@@ -22,6 +22,9 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
+
 const props = defineProps<{
   editMode: boolean
   form: { Id: number | null, Name: string, Income: number, Expense: number, Company: string, CityCode:string}

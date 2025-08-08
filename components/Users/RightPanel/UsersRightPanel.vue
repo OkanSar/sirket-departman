@@ -1,10 +1,10 @@
 <template>
   <v-card class="add-card" elevation="4" outlined shaped>
-    <v-card-title class="add-title">Yeni Kullanıcı Ekle</v-card-title>
+    <v-card-title class="add-title">{{ t('Add New User') }}</v-card-title>
     <v-form @submit.prevent="handleAdd" ref="addForm" class="add-form">
       <v-text-field 
         v-model="formAdd.NameSurname" 
-        label="Ad Soyad" 
+        :label="t('Name Surname')" 
         dense 
         outlined 
         class="mb-4" 
@@ -15,7 +15,7 @@
         :items="props.departments"
         item-title="Name"
         item-value="Id"
-        label="Departman Seç"
+        :label="t('Select Department')"
         dense
         outlined
         clearable
@@ -24,7 +24,7 @@
       />
 
       <v-btn type="submit" color="success" block rounded elevation="3" height="42">
-        Ekle
+        {{ t('Add') }}
       </v-btn>
     </v-form>
   </v-card>
@@ -32,6 +32,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 
 const props = defineProps<{
   initialForm: {

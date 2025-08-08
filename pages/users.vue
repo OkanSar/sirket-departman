@@ -1,7 +1,7 @@
 <template>
   <v-container class="crud-container" fluid>
     <div class="header">
-      <h2>Kullanıcı İşlemleri</h2>
+      <h2>{{ t('User Operations') }}</h2>
     </div>
 
     <v-row no-gutters>
@@ -36,6 +36,9 @@ import type { User } from '../types/user.ts'
 import UserLeftPanel from '~/components/Users/LeftPanel/UserLeftPanel.vue'
 import UserRightPanel from '~/components/Users/RightPanel/UsersRightPanel.vue'
 import type { Department } from '@prisma/client'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 const searchTerm = ref('')
 
 // Ortak config

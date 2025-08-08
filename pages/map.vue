@@ -22,9 +22,9 @@
       <template v-else-if="departments.length">
         <div v-for="(dep, i) in departments" :key="i" class="card">
           <h3>{{ dep.Name }}</h3>
-          <p class="gelir"><strong>Gelir:</strong> {{ dep.Income.toLocaleString() }} ₺</p>
-          <p class="gider"><strong>Gider:</strong> {{ dep.Expense.toLocaleString() }} ₺</p>
-          <p><strong>Şirket:</strong> {{ dep.Company }}</p>
+          <p class="gelir"><strong>{{ t('Income') }}:</strong> {{ dep.Income.toLocaleString() }} ₺</p>
+          <p class="gider"><strong>{{ t('Expense') }}:</strong> {{ dep.Expense.toLocaleString() }} ₺</p>
+          <p><strong>{{ t('Company') }}:</strong> {{ dep.Company }}</p>
         </div>
       </template>
       <template v-else>
@@ -44,6 +44,8 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const selectedRegion = ref('')
 const departments = ref([])

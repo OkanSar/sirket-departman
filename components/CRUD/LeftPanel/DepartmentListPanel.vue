@@ -1,11 +1,11 @@
 <template>
   <v-card class="list-card" outlined shaped elevation="3">
-    <v-card-title class="list-title">Departman Listesi</v-card-title>
+    <v-card-title class="list-title">{{ t('Department List') }}</v-card-title>
     <v-card-text style="padding-bottom: 0;">
       <v-text-field
         :model-value="searchTerm"
         @update:modelValue="val => emit('update:searchTerm', val)"
-        label="Ara..." dense outlined clearable
+        :label="t('Search')+'...'" dense outlined clearable
       />
     </v-card-text>
     <v-list two-line>
@@ -13,13 +13,13 @@
         <v-list-item-content>
           <v-list-item-title>{{ dep.Name }} - {{ dep.Company }} - {{ getCityNameWithCityCode(dep.CityCode) }}</v-list-item-title>
           <v-list-item-subtitle>
-            <span class="income">Gelir: {{ dep.Income }}</span>&nbsp;|&nbsp;
-            <span class="expense">Gider: {{ dep.Expense }}</span>
+            <span class="income">{{ t('Income') }}: {{ dep.Income }}</span>&nbsp;|&nbsp;
+            <span class="expense">{{ t('Expense') }}: {{ dep.Expense }}</span>
           </v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-action>
-          <v-btn small color="success" text @click="emit('editDepartment', dep)" class="btn-edit">Düzenle</v-btn>
-          <v-btn small color="error" text @click="emit('deleteDepartment', dep.Id)" class="btn-delete">Sil</v-btn>
+          <v-btn small color="success" text @click="emit('editDepartment', dep)" class="btn-edit">{{ t('Edit') }}</v-btn>
+          <v-btn small color="error" text @click="emit('deleteDepartment', dep.Id)" class="btn-delete">{{ t('Delete') }}</v-btn>
         </v-list-item-action>
       </v-list-item>
     </v-list>
@@ -29,6 +29,8 @@
 <script setup lang="ts">
 import type { Department } from '~/types/department'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 
 const props = defineProps<{
   departments: Department[] | null

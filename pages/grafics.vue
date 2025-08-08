@@ -1,6 +1,6 @@
 <template>
   <div style="max-width: 900px; margin: 2rem auto;">
-    <h1>Grafikler</h1>
+    <h1>{{ t('Graphics') }}</h1>
     <div v-if="pending">
       <CompanyGraficLoading />
       <DepartmentGraficLoading />
@@ -18,6 +18,8 @@ import CompanyGrafic from '~/components/Grafics/CompanyGrafic.vue'
 import CompanyGraficLoading from '~/components/Grafics/CompanyGraficLoading.vue'
 import DepartmentGrafic from '~/components/Grafics/DepartmentGrafic.vue'
 import DepartmentGraficLoading from '~/components/Grafics/DepartmentGraficLoading.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const config = useRuntimeConfig()
 const { data: departments, error } = await useFetch<Department[]>('/api/Departments', {

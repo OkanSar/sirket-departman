@@ -1,11 +1,11 @@
 <template>
   <v-expand-transition>
     <v-card v-if="editMode" class="edit-panel fixed-edit" elevation="5" outlined shaped>
-      <v-card-title class="edit-title">Kullanıcı Düzenle</v-card-title>
+      <v-card-title class="edit-title">{{ t('User Edit') }}</v-card-title>
       <v-form @submit.prevent="emit('handleUpdate')" class="edit-form">
         <v-text-field
           v-model="form.NameSurname"
-          label="Ad Soyad"
+          :label="t('Name Surname')"
           dense
           outlined
           class="mb-3"
@@ -16,7 +16,7 @@
           :items="departments ?? []"
           item-title="Name"
           item-value="Id"
-          label="Departman"
+          :label="t('Department')"
           dense
           outlined
           class="mb-3"
@@ -25,10 +25,10 @@
 
         <v-row dense>
           <v-col cols="6">
-            <v-btn type="submit" color="success" block rounded elevation="2">Güncelle</v-btn>
+            <v-btn type="submit" color="success" block rounded elevation="2">{{ t('Update') }}</v-btn>
           </v-col>
           <v-col cols="5">
-            <v-btn color="grey darken-1" block rounded elevation="2" @click="emit('cancelEdit')">İptal</v-btn>
+            <v-btn color="grey darken-1" block rounded elevation="2" @click="emit('cancelEdit')">{{ t('Cancel') }}</v-btn>
           </v-col>
         </v-row>
       </v-form>
@@ -38,6 +38,8 @@
 
 <script setup lang="ts">
 import type { Department } from '~/types/department';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 
 const config = useRuntimeConfig()
 

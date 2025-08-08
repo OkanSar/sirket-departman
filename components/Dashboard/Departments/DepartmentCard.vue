@@ -1,15 +1,16 @@
 <template>
   <div class="department-card" ref="cardRef" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave">
     <h4>{{ department.Name }}</h4>
-    <p class="subtext gelir">Gelir: {{ formatCurrency(department.Income || 0) }}</p>
-    <p class="subtext gider">Gider: {{ formatCurrency(department.Expense || 0) }}</p>
-    <p class="subtext">Şirket: {{ department.Company || 'Bilinmiyor' }}</p>
+    <p class="subtext gelir">{{ t('Income') }}: {{ formatCurrency(department.Income || 0) }}</p>
+    <p class="subtext gider">{{ t('Expense') }}: {{ formatCurrency(department.Expense || 0) }}</p>
+    <p class="subtext">{{ t('Company') }}: {{ department.Company || 'Bilinmiyor' }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Department } from '~/types/department'
+import { useI18n } from 'vue-i18n';
 
 const { department } = defineProps<{ department: Department }>()
 
@@ -50,6 +51,8 @@ function handleMouseLeave() {
     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translate(0,0)'
   }
 }
+
+const { t } = useI18n()
 </script>
 
 <style scoped>

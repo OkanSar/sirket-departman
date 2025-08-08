@@ -1,14 +1,14 @@
 <template>
   <v-card class="add-card" elevation="4" outlined shaped>
-    <v-card-title class="add-title">Yeni Departman Ekle</v-card-title>
+    <v-card-title class="add-title">{{ t('Add New Department') }}</v-card-title>
     <v-form @submit.prevent="handleAdd" ref="addForm" class="add-form">
-      <v-text-field v-model="formAdd.Name" label="Departman Adı" dense outlined class="mb-4" required/>
-      <v-text-field v-model.number="formAdd.Income" label="Gelir" type="number" dense outlined class="mb-4" required/>
-      <v-text-field v-model.number="formAdd.Expense" label="Gider" type="number" dense outlined class="mb-4" required/>
-      <v-autocomplete v-model="formAdd.Company" :items="['Emay','TeknoCo']" label="Şirket" dense outlined class="mb-6" required/>
-      <v-autocomplete v-model="formAdd.CityCode" :items="cityOptions" item-title="name" item-value="code" label="Şehir" dense outlined class="mb-6" required/>
+      <v-text-field v-model="formAdd.Name" :label="t('Department')" dense outlined class="mb-4" required/>
+      <v-text-field v-model.number="formAdd.Income" :label="t('Income')" type="number" dense outlined class="mb-4" required/>
+      <v-text-field v-model.number="formAdd.Expense" :label="t('Expense')" type="number" dense outlined class="mb-4" required/>
+      <v-autocomplete v-model="formAdd.Company" :items="['Emay','TeknoCo']" :label="t('Company')" dense outlined class="mb-6" required/>
+      <v-autocomplete v-model="formAdd.CityCode" :items="cityOptions" item-title="name" item-value="code" :label="t('City')" dense outlined class="mb-6" required/>
       <v-btn type="submit" color="success" block rounded elevation="3" height="42">
-        Ekle
+        {{ t('Add') }}
       </v-btn>
     </v-form>
   </v-card>
@@ -16,6 +16,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 
 const props = defineProps<{
   initialForm: {

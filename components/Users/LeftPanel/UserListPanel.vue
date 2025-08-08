@@ -1,23 +1,23 @@
 <template>
   <v-card class="list-card" outlined shaped elevation="3">
-    <v-card-title class="list-title">Kullanıcı Listesi</v-card-title>
+    <v-card-title class="list-title">{{ t('User List') }}</v-card-title>
     <v-card-text style="padding-bottom: 0;">
       <v-text-field
         :model-value="searchTerm"
         @update:modelValue="val => emit('update:searchTerm', val)"
-        label="Ara..." dense outlined clearable
+        :label="t('Search')+'...'" dense outlined clearable
       />
     </v-card-text>
     <v-list two-line>
       <v-list-item v-for="user in filteredUsers" :key="user.Id" class="list-item">
         <v-list-item-content>
           <v-list-item-title>{{ user.NameSurname }}</v-list-item-title>
-          <v-list-item-subtitle>Departman: {{ getDepartmentName(user.DepartmentId)}}</v-list-item-subtitle>
-          <v-list-item-subtitle>Kullanıcı ID: {{ user.Id ?? 'Belirtilmemiş' }}</v-list-item-subtitle>
+          <v-list-item-subtitle>{{ t('Department') }}: {{ getDepartmentName(user.DepartmentId)}}</v-list-item-subtitle>
+          <v-list-item-subtitle>{{ t('User') }} ID: {{ user.Id ?? 'Belirtilmemiş' }}</v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-action>
-          <v-btn :departments="departments" small color="success" text @click="emit('editUser', user)" class="btn-edit">Düzenle</v-btn>
-          <v-btn small color="error" text @click="emit('deleteUser', user.Id)" class="btn-delete">Sil</v-btn>
+          <v-btn :departments="departments" small color="success" text @click="emit('editUser', user)" class="btn-edit">{{ t('Edit') }}</v-btn>
+          <v-btn small color="error" text @click="emit('deleteUser', user.Id)" class="btn-delete">{{ t('Delete') }}</v-btn>
         </v-list-item-action>
       </v-list-item>
     </v-list>
@@ -28,6 +28,8 @@
 import type { User } from '~/types/user'
 import { computed } from 'vue'
 import type { Department } from '~/types/department';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 
 const props = defineProps<{
   users: User[] | null

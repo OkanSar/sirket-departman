@@ -1,7 +1,7 @@
 <template>
   <v-container class="crud-container" fluid>
     <div class="header">
-      <h2>Departman İşlemleri</h2>
+      <h2>{{ t('Department Operations') }}</h2>
     </div>
 
     <v-row no-gutters>
@@ -21,6 +21,8 @@ import { ref } from 'vue'
 import DepartmentLeftPanel from '~/components/CRUD/LeftPanel/DepartmentLeftPanel.vue'
 import DepartmentRightPanel from '~/components/CRUD/RightPanel/DepartmentRightPanel.vue'
 import type { Department } from '~/types/department'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const searchTerm = ref('')
 

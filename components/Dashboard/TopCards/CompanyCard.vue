@@ -1,7 +1,7 @@
 <template>
   <div class="company-card">
     <div class="header">
-      <small class="label">Şirket</small>
+      <small class="label">{{ t('Company') }}</small>
       <h2 class="company-name">{{ company }}</h2>
       <button type="button" class="show-departments-btn" @click="emit('select', company)">
         <i class="fa-solid fa-folder-tree"></i>
@@ -9,11 +9,11 @@
     </div>
     <div class="stats">
       <div class="stat">
-        <span class="title">Toplam Gelir: </span>
+        <span class="title">{{ t('Total Income') }}: </span>
         <span class="value gelir">{{ formattedIncome }} ₺</span>
       </div>
       <div class="stat">
-        <span class="title">Toplam Gider: </span>
+        <span class="title">{{ t('Total Expense') }}: </span>
         <span class="value gider">{{ formattedExpense }} ₺</span>
       </div>
     </div>
@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { computed, defineProps, defineEmits } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
   company: string
@@ -39,6 +40,8 @@ const formattedIncome = computed(() =>
 const formattedExpense = computed(() =>
   props.totalExpense(props.company).toLocaleString('tr-TR')
 )
+
+const { t } = useI18n()
 </script>
 
 

@@ -23,9 +23,16 @@ export default defineNuxtConfig({
   ],
   i18n: {
     locales: [
-      { code: 'tr', language: 'tr-TR' },
-      { code: 'en', language: 'en-US' }
+      { code: 'tr', file: 'tr.ts' },
+      { code: 'en', file: 'en.ts' }
     ],
+    langDir: 'locales/',
     defaultLocale: 'tr',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'locale',
+      alwaysRedirect: false,
+      fallbackLocale: 'tr'
+    }
   }
 })

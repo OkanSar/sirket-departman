@@ -1,9 +1,8 @@
 <template>
   <div class="top-cards">
     <template v-if="pending">
-        <CompanyCardLoading v-for="n in 2" :key="n" />
+        <CompanyCardLoading v-for="n in companies" :key="n" />
     </template>
-
     <template v-else>
         <CompanyCard v-for="company in companies" :key="company" 
         :company="company" :totalIncome="totalIncome" :totalExpense="totalExpense"
